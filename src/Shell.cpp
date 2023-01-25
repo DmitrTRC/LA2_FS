@@ -35,8 +35,9 @@ void Shell::Run() {
 
     std::istringstream ss(line);
 
-    cmd_line.clear();
+    //cmd_line.clear();
 
+    //TODO: Separate to function
     while (ss >> cmd) {
       cmd_line.push_back(cmd);
     }
