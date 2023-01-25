@@ -1,6 +1,7 @@
 #include  "Shell.hpp"
 
 #include <iostream>
+#include <memory>
 
 // argv : char * path, char * fs_size
 
@@ -11,7 +12,7 @@ int main(int argc, char *argv[]) { //TODO: Think about the arguments and
 
   std::cout << "File System is starting ..." << std::endl;
 
-  Shell *p_shell; // Use a pointer instead ( using std::uniq_ptr<> )
+  std::unique_ptr<Shell> p_shell; // Use a pointer instead ( using std::uniq_ptr<> )
 
   for (int i{0}; i < argc; ++i) {
     std::cout << "Arg " << i << " :  " << argv[i] << std::endl;
@@ -21,12 +22,12 @@ int main(int argc, char *argv[]) { //TODO: Think about the arguments and
     std::string path = argv[1];
     size_t size = std::stoi(argv[2]);
 
-    p_shell = new Shell(path, size);
+    p_shell = std::make_unique<Shell>(path, size);
 
   } else {
 
     std::cout << "Wrong args. Using default, Path = " << DEFAULT_PATH << " Size = " << DEFAULT_SIZE << std::endl;
-    p_shell = new Shell(DEFAULT_PATH, DEFAULT_SIZE);
+    p_shell = std::make_unique<Shell>(DEFAULT_PATH, DEFAULT_SIZE);
 
   }
 
