@@ -49,7 +49,7 @@ void Shell::Run() {
 
     std::cout << "Command is : " << cmd << std::endl;
 
-    cmd_line.erase(cmd_line.begin());
+    cmd_line.erase(cmd_line.begin(), cmd_line.end());
 
     if (cmd == "help") {
       help_cmd();
