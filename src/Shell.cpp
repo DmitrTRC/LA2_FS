@@ -25,6 +25,7 @@ void Shell::Run() {
 
   std::string cmd, line;
 
+  //Main loop
   while (cmd != "exit") {
 
     std::cout << "FS > ";
@@ -36,7 +37,7 @@ void Shell::Run() {
     std::istringstream ss(line);
 
 
-    //TODO: Separate to function
+    //Fill cmd_line vector
     while (ss >> cmd) {
       cmd_line.push_back(cmd);
     }
@@ -54,7 +55,11 @@ void Shell::Run() {
     if (cmd == "help") {
       help_cmd();
     } else if (cmd == "rename") {
-      rename_cmd();
+      if (cmd_line.size() != 2) {
+        std::cerr << " Wrong Argument number!" << std::endl;
+      } else {
+        rename_cmd(cmd_line[0], cmd_line[1]);
+      }
     } else {
       std::cout << "Unknown command" << cmd << std::endl;
       std::cout << "Type 'help' for a list of commands " << std::endl;
@@ -69,8 +74,9 @@ void Shell::help_cmd() {
   std::cout << "exit : Exit from shell \n";
   std::cout << "help : Show this screen \n";
 }
-void Shell::rename_cmd() {
+void Shell::rename_cmd(const std::string &src_fName, const std::string &trg_fName) {
 
   std::cout << " Rename command run " << std::endl;
+  std::cout << "Renaming file " << src_fName << " to file : " << trg_fName << std::endl;
 
 }

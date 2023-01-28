@@ -13,8 +13,8 @@ class Shell {
   void Run();
 
  private:
-  void help_cmd();
-  void rename_cmd();
+  static void help_cmd();
+  static void rename_cmd(const std::string &, const std::string &);
 
 };
 
