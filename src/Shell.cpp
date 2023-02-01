@@ -32,10 +32,12 @@ void Shell::Run() {
 
     std::getline(std::cin, line);
 
+
     std::cout << "User wrote : " << line << std::endl;
 
     std::istringstream ss(line);
 
+    cmd_line.clear();
 
     //Fill cmd_line vector
     while (ss >> cmd) {
